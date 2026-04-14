@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Gear Regiment</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+</head>
+<body class="loading">
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loader">
+    <canvas id="loaderCanvas"></canvas>
+    <div class="loader-scanlines"></div>
+
+    <!-- Click-to-start overlay (required by browser autoplay policy) -->
+    <div id="loader-init">
+      <div class="li-border"></div>
+      <div class="li-box">
+        <div class="li-corner li-tl"></div>
+        <div class="li-corner li-tr"></div>
+        <div class="li-corner li-bl"></div>
+        <div class="li-corner li-br"></div>
+        <div class="li-icon">▶</div>
+        <div class="li-label">[ CLICK TO INITIALIZE SYSTEM ]</div>
+        <div class="li-sub">CYBER GEAR REGIMENT // v2.0</div>
+      </div>
+    </div>
+
+    <div class="loader-body">
+      <div class="loader-corners">
+        <span class="lc lc-tl"></span>
+        <span class="lc lc-tr"></span>
+        <span class="lc lc-bl"></span>
+        <span class="lc lc-br"></span>
+      </div>
+
+      <img src="Logo.png" alt="CGR" class="loader-logo" />
+      <div class="loader-title">CYBER GEAR REGIMENT</div>
+      <div class="loader-sub">サイバー装備連隊</div>
+
+      <div class="loader-bar-wrap">
+        <div class="loader-bar-track">
+          <div class="loader-bar-fill" id="loaderBar"></div>
+        </div>
+        <div class="loader-bar-label" id="loaderPct">0%</div>
+      </div>
+
+      <div class="loader-status" id="loaderStatus">INITIALIZING SYSTEMS...</div>
+
+      <div class="loader-grid">
+        <div class="lg-item" id="lg1"><span class="lg-dot"></span>NEURAL UPLINK</div>
+        <div class="lg-item" id="lg2"><span class="lg-dot"></span>ENCRYPTION LAYER</div>
+        <div class="lg-item" id="lg3"><span class="lg-dot"></span>DARK GRID ACCESS</div>
+        <div class="lg-item" id="lg4"><span class="lg-dot"></span>OPERATIVE REGISTRY</div>
+      </div>
+    </div>
+  </div>
+  <!-- ===================================== -->
+
+  <!-- Background canvas for particle/rain animation -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Scanline overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Corner decorations -->
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Main wrapper -->
+  <div class="wrapper">
+
+    <!-- Header / Hero -->
+    <header class="hero">
+      <div class="hero-badge">[ SYSTEM ONLINE ]</div>
+      <img src="Logo.png" alt="Cyber Gear Regiment" class="hero-logo" />
+      <h1 class="hero-title glitch" data-text="CYBER GEAR REGIMENT">CYBER GEAR REGIMENT</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">&#9658; ELITE DIGITAL WARFARE UNIT &#9658; EST. 2077</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-val" id="count1">0</span><span class="stat-lbl">OPERATIVES</span></div>
+        <div class="stat-divider">|</div>
+        <div class="stat"><span class="stat-val" id="count2">0</span><span class="stat-lbl">MISSIONS</span></div>
+        <div class="stat-divider">|</div>
+        <div class="stat"><span class="stat-val" id="count3">0</span><span class="stat-lbl">SECTORS</span></div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">ENLIST NOW</a>
+        <a href="#ops" class="btn btn-outline">VIEW OPS</a>
+      </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-logo">
+        <img src="Logo.png" alt="CGR" class="nav-logo-img" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#ops">OPERATIONS</a></li>
+        <li><a href="#gear">GEAR</a></li>
+        <li><a href="#team">TEAM</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+      <div class="nav-status">&#11044; SECURE CONNECTION</div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="section-tag">// UNIT PROFILE</div>
+      <h2 class="section-title">WHO WE ARE</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>The <span class="highlight">Cyber Gear Regiment</span> is a covert network of elite operatives operating at the bleeding edge of digital warfare and cyber intelligence. We specialize in penetrating the most hardened systems, neutralizing threats before they materialize.</p>
+          <p>Founded in the shadows of the megacity grid, we forge warriors capable of surviving both the physical and the digital battlespace.</p>
+          <ul class="about-list">
+            <li>&#9632; Advanced Cyber-Ops Training</li>
+            <li>&#9632; Neural Interface Combat Systems</li>
+            <li>&#9632; Encrypted Network Supremacy</li>
+            <li>&#9632; Black-Site Intelligence Gathering</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <div class="card-header">UNIT STATUS</div>
+          <div class="card-row"><span>THREAT LEVEL</span><span class="tag tag-red">CRITICAL</span></div>
+          <div class="card-row"><span>READINESS</span><span class="tag tag-green">MAXIMAL</span></div>
+          <div class="card-row"><span>ENCRYPTION</span><span class="tag tag-cyan">AES-4096</span></div>
+          <div class="card-row"><span>NETWORK</span><span class="tag tag-cyan">DARK GRID</span></div>
+          <div class="card-row"><span>CLEARANCE</span><span class="tag tag-purple">OMEGA BLACK</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operations Section -->
+    <section class="section" id="ops">
+      <div class="section-tag">// ACTIVE OPERATIONS</div>
+      <h2 class="section-title">CURRENT MISSIONS</h2>
+      <div class="ops-grid">
+        <div class="op-card">
+          <div class="op-num">01</div>
+          <h3>OPERATION PHANTOM WIRE</h3>
+          <p>Infiltrate the NovaTech corporate mainframe and extract classified schematics from their deep vault servers.</p>
+          <div class="op-bar"><div class="op-fill" style="width:78%"></div></div>
+          <div class="op-footer"><span class="tag tag-yellow">IN PROGRESS</span><span>78% COMPLETE</span></div>
+        </div>
+        <div class="op-card">
+          <div class="op-num">02</div>
+          <h3>OPERATION NEON GHOST</h3>
+          <p>Dismantle the rogue AI collective threatening sector 7 grid stability before cascade failure destroys the district.</p>
+          <div class="op-bar"><div class="op-fill" style="width:45%"></div></div>
+          <div class="op-footer"><span class="tag tag-yellow">IN PROGRESS</span><span>45% COMPLETE</span></div>
+        </div>
+        <div class="op-card">
+          <div class="op-num">03</div>
+          <h3>OPERATION STEEL CIPHER</h3>
+          <p>Establish a permanent encrypted back-channel through enemy satellite networks for long-range covert communication.</p>
+          <div class="op-bar"><div class="op-fill" style="width:100%"></div></div>
+          <div class="op-footer"><span class="tag tag-green">COMPLETED</span><span>100% COMPLETE</span></div>
+        </div>
+        <div class="op-card">
+          <div class="op-num">04</div>
+          <h3>OPERATION DARK SIGNAL</h3>
+          <p>Track and neutralize an elite counter-cyber unit that has been compromising our operatives across the eastern grid.</p>
+          <div class="op-bar"><div class="op-fill" style="width:12%"></div></div>
+          <div class="op-footer"><span class="tag tag-red">CRITICAL</span><span>12% COMPLETE</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gear Section -->
+    <section class="section" id="gear">
+      <div class="section-tag">// ARMORY</div>
+      <h2 class="section-title">STANDARD ISSUE GEAR</h2>
+      <div class="gear-grid">
+        <div class="gear-item">
+          <div class="gear-icon">&#9729;</div>
+          <h3>NEURAL UPLINK MK-VII</h3>
+          <p>Direct neural-to-grid interface for real-time combat data streaming at 10 Tbit/s.</p>
+        </div>
+        <div class="gear-item">
+          <div class="gear-icon">&#9760;</div>
+          <h3>QUANTUM BLADE X</h3>
+          <p>Phase-resonance mono-filament edge, capable of slicing through reinforced alloy shielding.</p>
+        </div>
+        <div class="gear-item">
+          <div class="gear-icon">&#9873;</div>
+          <h3>GHOST CLOAK v3</h3>
+          <p>Adaptive light-bending exo-suit rendering the operative invisible across all EM spectrums.</p>
+        </div>
+        <div class="gear-item">
+          <div class="gear-icon">&#128526;</div>
+          <h3>CYPHER VISOR</h3>
+          <p>Augmented reality headset with deep hack assistance, target lock, and real-time decryption.</p>
+        </div>
+        <div class="gear-item">
+          <div class="gear-icon">&#9889;</div>
+          <h3>PLASMA DISRUPTOR</h3>
+          <p>Electromagnetic pulse weapon that fries unshielded electronics within a 50-meter radius.</p>
+        </div>
+        <div class="gear-item">
+          <div class="gear-icon">&#128225;</div>
+          <h3>DARK COMM NODE</h3>
+          <p>Untraceable encrypted communication relay bouncing through 128 randomized dark net nodes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section" id="team">
+      <div class="section-tag">// OPERATIVES</div>
+      <h2 class="section-title">UNIT ROSTER</h2>
+
+      <!-- Command Tier -->
+      <div class="team-tier-label">&#9830; COMMAND TIER</div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="CyberZero.png" alt="CyberZero" class="team-img">
+            <div class="team-rank-badge">CSF-ALPHA</div>
+          </div>
+          <div class="team-info">
+            <h3>CYBERZERO</h3>
+            <div class="team-role">Commander</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="KIMU.png" alt="Liege" class="team-img">
+            <div class="team-rank-badge">CSF-BETA</div>
+          </div>
+          <div class="team-info">
+            <h3>LIEGE</h3>
+            <div class="team-role">CyberMedic</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="Shadow2.png" alt="Shadow" class="team-img">
+            <div class="team-rank-badge">CSF-GAMMA</div>
+          </div>
+          <div class="team-info">
+            <h3>SHADOW</h3>
+            <div class="team-role">Assassin</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="SHIROMARU2.png" alt="ShiroMaru" class="team-img">
+            <div class="team-rank-badge">CSF-DELTA</div>
+          </div>
+          <div class="team-info">
+            <h3>SHIROMARU</h3>
+            <div class="team-role">Cyber Warfare Specialist</div>
+          </div>
+        </div>
+
+      </div><!-- /command grid -->
+
+      <!-- Field Operatives -->
+      <div class="team-tier-label" style="margin-top:48px;">&#9830; FIELD OPERATIVES</div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="NexZee.png" alt="NexZee" class="team-img">
+            <div class="team-rank-badge">UNIT-01</div>
+          </div>
+          <div class="team-info">
+            <h3>NEXZEE</h3>
+            <div class="team-role">Systems Infiltrator</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="Krønoz.png" alt="Kronoz" class="team-img">
+            <div class="team-rank-badge">UNIT-02</div>
+          </div>
+          <div class="team-info">
+            <h3>KR&#216;NOZ</h3>
+            <div class="team-role">Net Runner</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="LEO.png" alt="LEO" class="team-img">
+            <div class="team-rank-badge">UNIT-03</div>
+          </div>
+          <div class="team-info">
+            <h3>LEO</h3>
+            <div class="team-role">Combat Specialist</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="Kishi Tsubasa.png" alt="Kishi Tsubasa" class="team-img">
+            <div class="team-rank-badge">UNIT-05</div>
+          </div>
+          <div class="team-info">
+            <h3>KISHI TSUBASA</h3>
+            <div class="team-role">Recon Operative</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="Asahi Yumi.png" alt="Asahi Yumi" class="team-img">
+            <div class="team-rank-badge">UNIT-06</div>
+          </div>
+          <div class="team-info">
+            <h3>ASAHI YUMI</h3>
+            <div class="team-role">Field Scout</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="Juliane.png" alt="Juliane" class="team-img">
+            <div class="team-rank-badge">UNIT-07</div>
+          </div>
+          <div class="team-info">
+            <h3>JULIANE</h3>
+            <div class="team-role">Intel Analyst</div>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-img-wrap">
+            <img src="TF PILLSBURY.png" alt="TF PILLSBURY" class="team-img">
+            <div class="team-rank-badge">UNIT-08</div>
+          </div>
+          <div class="team-info">
+            <h3>TF PILLSBURY</h3>
+            <div class="team-role">Heavy Assault</div>
+          </div>
+        </div>
+
+      </div><!-- /field grid -->
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="section-tag">// SECURE CHANNEL</div>
+      <h2 class="section-title">ESTABLISH CONTACT</h2>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p>All communications are routed through a 256-layer encrypted tunnel. Transmissions are anonymized and self-destruct after 60 seconds.</p>
+          <div class="contact-item">&#9632; ENCRYPTED LINE: <span class="highlight">cgr://darknet.omega.7</span></div>
+          <div class="contact-item">&#9632; SIGNAL FREQ: <span class="highlight">44.7 MHz / GHOST BAND</span></div>
+          <div class="contact-item">&#9632; DEAD DROP: <span class="highlight">SECTOR 12-DELTA NODE</span></div>
+        </div>
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-group">
+            <label>OPERATIVE HANDLE</label>
+            <input type="text" placeholder="Enter your alias..." />
+          </div>
+          <div class="form-group">
+            <label>ENCRYPTED MESSAGE</label>
+            <textarea placeholder="Transmit your message..." rows="5"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">TRANSMIT &#9658;</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="Logo.png" alt="CGR" style="height:90px;width:auto;filter:drop-shadow(0 0 16px rgba(255,30,46,0.7));" />
+      </div>
+      <p class="footer-tagline">CYBER GEAR REGIMENT &mdash; FORGED IN THE GRID</p>
+      <p class="footer-copy">&copy; 2077 CYBER GEAR REGIMENT. ALL RIGHTS RESERVED. UNAUTHORIZED ACCESS WILL BE MET WITH EXTREME PREJUDICE.</p>
+    </footer>
+
+  </div><!-- /.wrapper -->
+
+  <script src="sounds.js"></script>
+  <script src="loader.js"></script>
+  <script src="animation.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
